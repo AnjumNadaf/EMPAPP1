@@ -1,0 +1,136 @@
+<mvc:View controllerName="EA.EmployeeApp2.controller.Project" xmlns:sf="sap.ui.layout.form" 
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+
+		<App >
+			<pages>
+				<Page id="page" title="{i18n>project}" showHeader="false">
+					<content>
+   
+                    <VBox class="sapUiSmallMargin">
+		<sf:SimpleForm id="SimpleFormChange353"
+			editable="true"
+            visible="false"
+			layout="ResponsiveGridLayout"
+			title="Create New Project "
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<sf:content>
+				<Label text="ProjectId"/> 
+				<Input id="Pid" value=""  placeholder="Enter Project ID" liveChange=" onChangePid"  />
+                <Label text="EmployeeId"/> 
+				<Input id="eid"  value="{emp>/data/0/id}" editable="false"  />
+                <Label text="EmployeeName"/> 
+				<Input id="name"  value="{emp>/data/0/name}" editable="false" />
+                <Label text="ProjectName" />
+				<Input id="Pname" value=""  placeholder="Enter your Projectname" liveChange="onChangePname"/>
+                <Label text="ProjectDetails"/>
+				<Input id="pdetails" value="" placeholder="Projectdetails" liveChange="onChangePDetails"/>
+                <Label text="Project Start Date"/>
+                
+		<DatePicker
+			id="PSDP"
+			placeholder="Enter StartDate"
+			change="onChangePs"
+			class="sapUiSmallMarginBottom" />
+				
+                <Label text="Project End Date"/>
+                <DatePicker
+			id="PEDP"
+			placeholder="Enter EndDate"
+			change="onChangePe"
+			class="sapUiSmallMarginBottom"/>
+				
+				
+				<Label text="Project Status"/>
+				<Input id="pstatus" value="" placeholder="Status" liveChange="onChangePstatues"/>
+				
+                <Label></Label>
+				<Button text="Save" type="Emphasized" press="onCreate"></Button>
+                <Button text="Close" type="Reject" press="onCloseProject"></Button>
+                 </sf:content>
+		</sf:SimpleForm>
+	</VBox>
+            
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				<!-- <OverflowToolbarButton text="Test"/> -->
+				<OverflowToolbarButton icon="sap-icon://create" tooltip="Create" text="Create" press="onProjectOpen3"/>
+				<OverflowToolbarButton icon="sap-icon://edit" tooltip="Edit" text="Edit" press="onEdit"/>
+				<OverflowToolbarButton icon="sap-icon://delete" tooltip="Delete" text="Delete" press="onDelete"/>
+				<!-- <OverflowToolbarButton icon="sap-icon://action-settings" tooltip="Column Settings" text="Column Settings" press="onColumns"/> -->
+			</OverflowToolbar>
+
+                          <!--  Table integration -->
+    <Table mode="MultiSelect" growingThreshold="100" growing="true" id="idProjectListItem"
+     growingScrollToLoad="true" items="{projectModel>/project}">
+        <columns>
+        <Column  minScreenWidth="Small">
+					<Label text="PID"></Label>
+				</Column>
+				<Column visible="false">
+					<Label text="EID"></Label>
+				</Column>
+				<Column>
+					<Label text="Name"></Label>
+				</Column>
+				<Column>
+					<Label text="Projectname"></Label>
+				</Column>
+				<Column >
+					<Label text="ProjectDetails"></Label>
+				</Column>
+				<Column>
+					<Label text="StartDate"></Label>
+				</Column>
+                <Column width="8em">
+					<Label text="EndDate"></Label>
+				</Column>
+				<Column>
+					<Label text="Status"></Label>
+				</Column>
+        </columns>
+        <items>
+        <ColumnListItem>
+					<cells>
+						<Input value="{projectModel>Pid}" editable="false"/>
+						<Input value="{projectModel>Eid}" editable="false"/>
+						<Input value="{projectModel>Name}" editable="false"/>
+						<Input value="{projectModel>Projectname}" editable="false"/>
+                        <Input value="{projectModel>Projectdetails}" editable="false"/>
+						<Input value="{projectModel>Startdate}" editable="false" />
+                        <Input value="{projectModel>Enddate}" editable="false" />
+                        <Input value="{projectModel>Status}" editable="false" />
+						
+					</cells>
+				</ColumnListItem> 
+        </items>
+     </Table>
+<!--  EndTable integration -->
+                    </content>
+                    <footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer />
+				<Button text="Save" press="onSaveP" type="Emphasized" visible="false" id="saveid">
+				
+				</Button>
+			</OverflowToolbar>
+		</footer>
+				</Page>
+			</pages>
+		</App>
+	
+</mvc:View>

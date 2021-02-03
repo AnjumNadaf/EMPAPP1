@@ -1,0 +1,80 @@
+<mvc:View xmlns:tnt="sap.tnt"
+  xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
+ xmlns:f="sap.f" xmlns:form="sap.ui.layout.form"  xmlns="sap.m"
+ xmlns:mvc="sap.ui.core.mvc" xmlns:uxap="sap.uxap"  controllerName="EA.EmployeeApp2.controller.SplitApp" displayBlock="true">
+		<App >
+			<pages>
+				<Page id="page" title="Main" showHeader="false">
+                    
+					<content>
+                   	<tnt:ToolHeader >
+						<Bar>
+							<contentLeft>
+								<Image src="{master>/logo/0/image}" alt="LOGO" height="3rem"/>
+							</contentLeft>
+							<contentMiddle>
+								<Title text="{i18n>EmployeeApp}" titleStyle="H2"/>
+							</contentMiddle>
+							<contentRight>
+                                 <Button icon="sap-icon://bell" type="Emphasized" id="popOver" press="openMsgList"></Button>
+                                 <!-- <Button   icon="sap-icon://bell" press="onOpenNoti"></Button> -->
+                                 
+								<Button   icon="sap-icon://log" press="onLogout"></Button>
+                                
+							</contentRight>
+						</Bar>
+					</tnt:ToolHeader>
+
+                    <SplitApp id="SplitApp" initialDetail="Home">
+                     <masterPages >
+                  <Page visible="true" showFooter="true" showHeader="false">
+                
+                  
+
+                     	<List itemPress=".onListItemPress"
+                          items="{master>/views}"  mode="SingleSelectMaster">
+							<items>
+								<StandardListItem title="{master>name}" type="Active"></StandardListItem>
+							</items>
+						</List>
+                  <footer >
+                    <Toolbar active="true">
+                        <content>
+                            <ToolbarSpacer/>
+                           
+                        <Button text="Request" press="onRequest" type="Emphasized"></Button>
+                        </content>
+                    </Toolbar>
+                 </footer>
+                  </Page>
+               
+                     </masterPages>
+
+                     <detailPages>
+
+                     <Page id="Home" showHeader="false">
+                     
+                     <mvc:XMLView viewName="EA.EmployeeApp2.view.Home"></mvc:XMLView>
+                     </Page>
+
+                     <Page id="Profile" >                 
+                     <mvc:XMLView viewName="EA.EmployeeApp2.view.Profile"></mvc:XMLView> 
+                    </Page>
+
+                     <Page id="Project" showHeader="false">
+                     <mvc:XMLView viewName="EA.EmployeeApp2.view.Project"></mvc:XMLView>
+                     </Page>
+
+                     <Page id="Others" showHeader="false" >
+                     <mvc:XMLView viewName="EA.EmployeeApp2.view.Others"></mvc:XMLView>
+                     </Page>
+
+                     </detailPages>
+
+                     </SplitApp>
+                   
+                    </content>
+				</Page>
+			</pages>
+		</App>
+</mvc:View>

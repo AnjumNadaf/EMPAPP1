@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+<Dialog  title="Notification" >
+   
+
+    	<Table items="{requestModel>/request}"  width="50rem">
+			<columns>				
+				<Column>
+					<Label text="Hi Your  Requests !!!"></Label>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+                        
+			<NotificationListGroup
+				title="{requestModel>Reason}"
+				showCloseButton="false"
+				collapsed="true"
+				close=".onItemClose">
+				
+				<NotificationListItem
+					title="{requestModel>Type}"
+					description="{requestModel>Reason} "
+					showCloseButton="false"
+					datetime="{requestModel>Rdate}"
+					unread="true"
+					priority="None"
+					close=".onItemClose"
+					press=".onListItemPress"
+					/>
+			</NotificationListGroup>
+                       
+						
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+            <beginButton>
+			
+            <Button press="onClosePopover" text="Close" ></Button>
+		</beginButton>
+            
+              </Dialog> 	
+</core:FragmentDefinition>
