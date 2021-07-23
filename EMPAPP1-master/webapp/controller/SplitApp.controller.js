@@ -14,7 +14,7 @@ sap.ui.define([
 	function (BaseController,JSONModel,Log,Fragment,MessagePopover,MessagePopoverItem,MessageToast,Dialog) {
         "use strict";
         
-
+dis
     
 		return BaseController.extend("EA.EmployeeApp2.controller.SplitApp", {
 			onInit: function () {
@@ -36,10 +36,10 @@ sap.ui.define([
     openMsgList: function () {
       //  debugger;
 
-        
+        var id = this.createId();
 
    if (!this.oPopover) {
-    this.oPopover = sap.ui.xmlfragment("EA.EmployeeApp2.view.Notification", this);
+    this.oPopover = sap.ui.xmlfragment(id,"EA.EmployeeApp2.view.Notification", this);
     this.getView().addDependent(this.oPopover);
    }  
           this.oPopover.open();

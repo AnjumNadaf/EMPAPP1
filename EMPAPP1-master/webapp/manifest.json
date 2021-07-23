@@ -168,7 +168,8 @@
         },
         "Others":{
             "viewType": "XML",
-            "viewName": "Others"
+            "viewName": "Others",
+            "viewId": "others"
         }
       }
     }
